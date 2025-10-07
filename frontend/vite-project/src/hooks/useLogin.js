@@ -9,17 +9,18 @@ const useLogin = ()=>{
     const login = async ({username,password})=>{
         setLoading(true);
         try{
-            const res = fetch("/api/auth/login",{
+            const res = await fetch("/api/auth/login",{
                 method:"POST",
                 headers:{"Content-Type":"application/json"},
                 body:JSON.stringify({username,password})
             })
-            const data = (await res).json();
+            const data = await res.json();
             console.log(data);
             if(data.error){
                 toast.error(data.error);
             }
             setAuthUser(data);
+            console.log(data);  
             localStorage.setItem("chat-user",JSON.stringify(data));
         }catch(error){
             console.log(error);

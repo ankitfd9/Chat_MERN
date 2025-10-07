@@ -19,7 +19,7 @@ const useGetConversations = ()=>{
                 const participantsArray = Array.isArray(data.result)
                 ? data.result.map(item => item.participant)
                 : [];
-                //console.log(participantsArray);
+                console.log(participantsArray);
                 setConversations(participantsArray);
                 
             }catch(error){
